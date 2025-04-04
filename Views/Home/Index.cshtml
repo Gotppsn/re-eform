@@ -3,9 +3,9 @@
 }
 
 <div class="space-y-6">
-    <!-- Welcome Section -->
-    <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
+    <!-- Welcome Banner -->
+    <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
+        <div class="px-6 py-6 sm:px-8">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex-1 min-w-0">
                     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
@@ -15,10 +15,10 @@
                         Create, manage, and analyze forms with ease.
                     </p>
                 </div>
-                <div class="mt-4 flex md:mt-0">
-                    <a href="/FormBuilder/Create" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                <div class="mt-5 flex md:mt-0 md:ml-4">
+                    <a href="/FormBuilder/Create" class="btn-primary flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
                         Create New Form
                     </a>
@@ -28,68 +28,280 @@
     </div>
 
     <!-- Stats Overview -->
-    <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Overview</h3>
-            <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                <!-- Total Forms -->
-                <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
-                    <div class="p-5">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
-                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                            </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Forms</dt>
-                                    <dd class="flex items-baseline">
-                                        <div class="text-2xl font-semibold text-gray-900">12</div>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-full p-3">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Forms</dt>
+                            <dd class="flex items-baseline">
+                                <div class="text-2xl font-semibold text-gray-900">12</div>
+                            </dd>
+                        </dl>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Total Responses -->
-                <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
-                    <div class="p-5">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
-                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                            </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Responses</dt>
-                                    <dd class="flex items-baseline">
-                                        <div class="text-2xl font-semibold text-gray-900">432</div>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-green-500 rounded-full p-3">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Responses</dt>
+                            <dd class="flex items-baseline">
+                                <div class="text-2xl font-semibold text-gray-900">432</div>
+                                <p class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                    <svg class="self-center flex-shrink-0 h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="sr-only">Increased by</span>
+                                    12%
+                                </p>
+                            </dd>
+                        </dl>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Active Forms -->
-                <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
-                    <div class="p-5">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-blue-500 rounded-full p-3">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Active Forms</dt>
+                            <dd class="flex items-baseline">
+                                <div class="text-2xl font-semibold text-gray-900">8</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-purple-500 rounded-full p-3">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">Total Views</dt>
+                            <dd class="flex items-baseline">
+                                <div class="text-2xl font-semibold text-gray-900">1,234</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <!-- Recent Forms -->
+        <div class="bg-white shadow-sm rounded-lg border border-gray-200">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Forms</h3>
+                <a href="/FormManagement" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    View all forms <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+            <div class="border-t border-gray-200">
+                <ul class="divide-y divide-gray-200">
+                    <li>
+                        <a href="/FormBuilder/Edit/1" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-indigo-600 truncate">Customer Feedback</p>
+                                    <div class="ml-2 flex-shrink-0 flex">
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Active
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 sm:flex sm:justify-between">
+                                    <div class="sm:flex">
+                                        <p class="flex items-center text-sm text-gray-500">
+                                            <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                            </svg>
+                                            56 submissions
+                                        </p>
+                                    </div>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                        </svg>
+                                        <p>
+                                            Updated <time datetime="2025-04-01">April 1, 2025</time>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Active Forms</dt>
-                                    <dd class="flex items-baseline">
-                                        <div class="text-2xl font-semibold text-gray-900">8</div>
-                                    </dd>
-                                </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FormBuilder/Edit/2" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-indigo-600 truncate">IT Support Request</p>
+                                    <div class="ml-2 flex-shrink-0 flex">
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Active
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 sm:flex sm:justify-between">
+                                    <div class="sm:flex">
+                                        <p class="flex items-center text-sm text-gray-500">
+                                            <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                            </svg>
+                                            87 submissions
+                                        </p>
+                                    </div>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                        </svg>
+                                        <p>
+                                            Updated <time datetime="2025-03-28">March 28, 2025</time>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FormBuilder/Edit/3" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-indigo-600 truncate">Employee Onboarding</p>
+                                    <div class="ml-2 flex-shrink-0 flex">
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Draft
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mt-2 sm:flex sm:justify-between">
+                                    <div class="sm:flex">
+                                        <p class="flex items-center text-sm text-gray-500">
+                                            <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                            </svg>
+                                            0 submissions
+                                        </p>
+                                    </div>
+                                    <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                        </svg>
+                                        <p>
+                                            Updated <time datetime="2025-03-25">March 25, 2025</time>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white shadow-sm rounded-lg border border-gray-200">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
+                <a href="/Reports" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    View all analytics <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+            <div class="border-t border-gray-200">
+                <div class="p-5">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-green-100 rounded-full p-2">
+                                    <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3 w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-900">New submission received</div>
+                                <div class="mt-1 text-sm text-gray-500">
+                                    <span class="font-medium text-indigo-600">Customer Feedback</span> form was submitted 20 minutes ago
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-indigo-100 rounded-full p-2">
+                                    <svg class="h-5 w-5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3 w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-900">Form created</div>
+                                <div class="mt-1 text-sm text-gray-500">
+                                    <span class="font-medium text-indigo-600">Leave Request</span> form was created 1 hour ago
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-100 rounded-full p-2">
+                                    <svg class="h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3 w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-900">Form viewed</div>
+                                <div class="mt-1 text-sm text-gray-500">
+                                    <span class="font-medium text-indigo-600">IT Support Request</span> form had 5 new views in the last hour
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-yellow-100 rounded-full p-2">
+                                    <svg class="h-5 w-5 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-3 w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-900">Reminder</div>
+                                <div class="mt-1 text-sm text-gray-500">
+                                    You have a draft form that hasn't been published for 3 days
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,181 +310,63 @@
         </div>
     </div>
 
-    <!-- Recent Forms Section -->
-    <div class="bg-white shadow-sm rounded-lg">
-        <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Forms</h3>
-            <a href="/FormManagement" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                View all forms <span aria-hidden="true">&rarr;</span>
-            </a>
+    <!-- Form Templates Section -->
+    <div class="bg-white shadow-sm rounded-lg border border-gray-200">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Form Templates</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Quick start with pre-built templates</p>
         </div>
-        <div class="border-t border-gray-200">
-            <ul class="divide-y divide-gray-200">
-                <li>
-                    <a href="/FormBuilder/Edit/1" class="block hover:bg-gray-50">
-                        <div class="px-4 py-4 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-indigo-600 truncate">Customer Feedback</p>
-                                <div class="ml-2 flex-shrink-0 flex">
-                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-2 sm:flex sm:justify-between">
-                                <div class="sm:flex">
-                                    <p class="flex items-center text-sm text-gray-500">
-                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        Collect customer feedback
-                                    </p>
-                                </div>
-                                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                    </svg>
-                                    <p>
-                                        Created <time datetime="2025-04-01">April 1, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/FormBuilder/Edit/2" class="block hover:bg-gray-50">
-                        <div class="px-4 py-4 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-indigo-600 truncate">IT Support Request</p>
-                                <div class="ml-2 flex-shrink-0 flex">
-                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-2 sm:flex sm:justify-between">
-                                <div class="sm:flex">
-                                    <p class="flex items-center text-sm text-gray-500">
-                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        IT support and service requests
-                                    </p>
-                                </div>
-                                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                    </svg>
-                                    <p>
-                                        Created <time datetime="2025-03-28">March 28, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/FormBuilder/Edit/3" class="block hover:bg-gray-50">
-                        <div class="px-4 py-4 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-indigo-600 truncate">Employee Onboarding</p>
-                                <div class="ml-2 flex-shrink-0 flex">
-                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                        Draft
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-2 sm:flex sm:justify-between">
-                                <div class="sm:flex">
-                                    <p class="flex items-center text-sm text-gray-500">
-                                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-                                        </svg>
-                                        New employee information collection
-                                    </p>
-                                </div>
-                                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                    </svg>
-                                    <p>
-                                        Created <time datetime="2025-03-25">March 25, 2025</time>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Quick Actions Section -->
-    <div class="bg-white shadow-sm rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Quick Actions</h3>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                <a href="/FormBuilder/Create" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                        </svg>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-sm font-medium text-gray-900">Create New Form</p>
-                            <p class="text-sm text-gray-500">Start building a custom form</p>
-                        </a>
-                    </div>
-                </a>
-
-                <a href="/FormManagement" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <a href="/FormBuilder/Create?template=feedback" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-sm font-medium text-gray-900">Manage Forms</p>
-                            <p class="text-sm text-gray-500">View and manage all your forms</p>
-                        </a>
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Feedback Form</p>
+                        <p class="text-sm text-gray-500">Collect customer feedback</p>
                     </div>
                 </a>
-
-                <a href="/Reports" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                
+                <a href="/FormBuilder/Create?template=survey" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-sm font-medium text-gray-900">View Reports</p>
-                            <p class="text-sm text-gray-500">Analyze form submissions data</p>
-                        </a>
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Survey</p>
+                        <p class="text-sm text-gray-500">Gather information and opinions</p>
                     </div>
                 </a>
-
-                <a href="/FormBuilder/Create?template=feedback" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                
+                <a href="/FormBuilder/Create?template=registration" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                     <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-sm font-medium text-gray-900">Use Templates</p>
-                            <p class="text-sm text-gray-500">Start with pre-built templates</p>
-                        </a>
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Registration Form</p>
+                        <p class="text-sm text-gray-500">Event or service registration</p>
+                    </div>
+                </a>
+                
+                <a href="/FormBuilder/Create?template=request" class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-400 hover:bg-indigo-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <span class="absolute inset-0" aria-hidden="true"></span>
+                        <p class="text-sm font-medium text-gray-900">Request Form</p>
+                        <p class="text-sm text-gray-500">Service or resource requests</p>
                     </div>
                 </a>
             </div>
