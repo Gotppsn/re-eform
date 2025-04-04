@@ -3,24 +3,41 @@
 }
 
 <div x-data="formBuilder()" class="space-y-6">
-    <!-- Form Header with title and actions -->
-    <div class="bg-white shadow rounded-lg p-4">
+    <!-- Form Header with actions -->
+    <div class="bg-white shadow-sm rounded-lg p-4">
         <div class="flex flex-col sm:flex-row sm:items-center gap-4">
             <div class="flex-grow">
-                <input type="text" x-model="formTitle" placeholder="Form Title" class="form-input text-2xl font-semibold border-0 focus:ring-0 p-0">
-                <input type="text" x-model="formDescription" placeholder="Form Description" class="form-input mt-1 text-gray-500 border-0 focus:ring-0 p-0">
+                <input type="text" x-model="formTitle" placeholder="Form Title" class="block w-full border-none text-2xl font-semibold focus:ring-0 p-0 focus:outline-none">
+                <input type="text" x-model="formDescription" placeholder="Form Description" class="block w-full border-none text-gray-500 focus:ring-0 p-0 mt-1 focus:outline-none">
             </div>
-            <div class="flex items-center space-x-2">
-                <button type="button" class="btn-outline" x-on:click="previewForm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
+            <div class="flex items-center space-x-3">
+                <div class="relative" x-data="{ open: false }">
+                    <button @@click="open = !open" type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        </svg>
+                        Status: <span x-text="formStatus" class="ml-1"></span>
+                    </button>
+                    <div x-show="open" @@click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical">
+                        <div class="py-1" role="none">
+                            <button @@click="formStatus = 'Draft'; open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Draft</button>
+                            <button @@click="formStatus = 'Active'; open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Active</button>
+                            <button @@click="formStatus = 'Archived'; open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Archived</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" @@click="previewForm" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                         <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                     </svg>
                     Preview
                 </button>
-                <button type="button" class="btn-primary" x-on:click="saveForm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                
+                <button type="button" @@click="saveForm" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <svg class="-ml-0.5 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     Save Form
                 </button>
@@ -28,459 +45,334 @@
         </div>
     </div>
 
-    <!-- Main Content Area with Form Builder and Toolbox -->
+    <!-- Main Content -->
     <div class="flex flex-col lg:flex-row gap-6">
         <!-- Form Builder Canvas -->
-        <div class="flex-grow bg-white shadow rounded-lg p-6">
-            <h2 class="text-lg font-medium mb-4">Form Builder</h2>
-            <div 
-                id="form-canvas" 
-                class="min-h-[400px] border-2 border-dashed border-gray-300 rounded-lg p-4"
-                x-ref="formCanvas">
-                
-                <template x-if="formElements.length === 0">
-                    <div class="flex flex-col items-center justify-center h-64 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <p class="text-center">Drag and drop form elements here to build your form</p>
-                    </div>
-                </template>
-                
-                <template x-for="(element, index) in formElements" :key="element.id">
-                    <div 
-                        class="form-builder-element" 
-                        :class="{'form-builder-element-selected': selectedElementIndex === index}"
-                        x-on:click.stop="selectElement(index)">
-                        
-                        <!-- Text Input -->
-                        <template x-if="element.type === 'text'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Text Input'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
+        <div class="flex-grow bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="border-b border-gray-200 p-4 flex justify-between items-center">
+                <h2 class="text-lg font-medium text-gray-900">Form Builder</h2>
+                <button type="button" @@click="clearForm" class="text-sm text-gray-500 hover:text-gray-700">
+                    Clear All
+                </button>
+            </div>
+            <div class="p-6">
+                <div 
+                    id="form-canvas" 
+                    class="min-h-[500px] border-2 border-dashed border-gray-300 rounded-lg p-4 relative"
+                    x-ref="formCanvas"
+                    @@dragover.prevent="dragOver($event)"
+                    @@dragleave.prevent="dragLeave($event)"
+                    @@drop.prevent="drop($event)">
+                    
+                    <template x-if="formElements.length === 0">
+                        <div class="flex flex-col items-center justify-center h-64 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-3 5h8a2 2 0 002-2V8a2 2 0 00-2-2H9a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <p class="text-center">Drag and drop form elements from the toolbox</p>
+                        </div>
+                    </template>
+                    
+                    <template x-for="(element, index) in formElements" :key="element.id">
+                        <div 
+                            class="bg-white border p-4 mb-3 rounded-lg cursor-move hover:border-indigo-300 transition-colors shadow-sm"
+                            :class="{'ring-2 ring-indigo-500 border-indigo-500': selectedElementIndex === index}"
+                            @@click.stop="selectElement(index)"
+                            draggable="true"
+                            @@dragstart="dragStart($event, index)"
+                            @@dragend="dragEnd($event)">
+                            
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mr-2 cursor-move" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                    </svg>
+                                    <h3 class="font-medium text-gray-900" x-text="element.label || getElementTypeName(element.type)"></h3>
+                                    <span x-show="element.required" class="ml-1 text-red-500">*</span>
                                 </div>
-                                <input type="text" :placeholder="element.placeholder || 'Enter text'" class="form-input">
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                            </div>
-                        </template>
-                        
-                        <!-- Textarea -->
-                        <template x-if="element.type === 'textarea'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Text Area'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <textarea :placeholder="element.placeholder || 'Enter text'" class="form-input" rows="3"></textarea>
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                            </div>
-                        </template>
-                        
-                        <!-- Dropdown -->
-                        <template x-if="element.type === 'select'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Dropdown'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <select class="form-select">
-                                    <option selected disabled x-text="element.placeholder || 'Select an option'"></option>
-                                    <template x-for="option in element.options" :key="option.value">
-                                        <option :value="option.value" x-text="option.label"></option>
-                                    </template>
-                                </select>
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                            </div>
-                        </template>
-                        
-                        <!-- Radio Group -->
-                        <template x-if="element.type === 'radio'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Radio Group'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="space-y-2 mt-1">
-                                    <template x-for="option in element.options" :key="option.value">
-                                        <div class="flex items-center">
-                                            <input :id="`radio-${element.id}-${option.value}`" :name="`radio-${element.id}`" type="radio" :value="option.value" class="h-4 w-4 text-primary-600 border-gray-300 focus:ring-primary-500">
-                                            <label :for="`radio-${element.id}-${option.value}`" x-text="option.label" class="ml-3 text-sm text-gray-700"></label>
-                                        </div>
-                                    </template>
-                                </div>
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                            </div>
-                        </template>
-                        
-                        <!-- Checkbox Group -->
-                        <template x-if="element.type === 'checkbox'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Checkbox Group'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="space-y-2 mt-1">
-                                    <template x-for="option in element.options" :key="option.value">
-                                        <div class="flex items-center">
-                                            <input :id="`checkbox-${element.id}-${option.value}`" type="checkbox" :value="option.value" class="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
-                                            <label :for="`checkbox-${element.id}-${option.value}`" x-text="option.label" class="ml-3 text-sm text-gray-700"></label>
-                                        </div>
-                                    </template>
-                                </div>
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                            </div>
-                        </template>
-                        
-                        <!-- File Upload -->
-                        <template x-if="element.type === 'file'">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'File Upload'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                    <div class="space-y-1 text-center">
-                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <div class="flex space-x-2">
+                                    <button type="button" @@click.stop="duplicateElement(index)" class="text-gray-400 hover:text-indigo-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                         </svg>
-                                        <div class="flex text-sm text-gray-600">
-                                            <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
-                                                <span>Upload a file</span>
-                                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                                            </label>
-                                            <p class="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p class="text-xs text-gray-500" x-text="element.acceptedFiles || 'PNG, JPG, GIF, PDF up to 10MB'"></p>
-                                    </div>
+                                    </button>
+                                    <button type="button" @@click.stop="removeElement(index)" class="text-gray-400 hover:text-red-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
                                 </div>
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
                             </div>
-                        </template>
-                        
-                        <!-- Date Picker -->
-                        <template x-if="element.type === 'date'">
+                            
+                            <!-- Element Preview based on type -->
                             <div>
-                                <div class="flex justify-between items-start">
-                                    <label x-text="element.label || 'Date'" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                                    <div x-show="selectedElementIndex === index" class="flex space-x-1">
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index - 1)" :disabled="index === 0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-gray-600" x-on:click.stop="moveElement(index, index + 1)" :disabled="index === formElements.length - 1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="text-gray-400 hover:text-red-500" x-on:click.stop="removeElement(index)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
+                                <!-- Text Input -->
+                                <template x-if="element.type === 'text'">
+                                    <input type="text" class="mt-1 block w-full shadow-sm border-gray-300 rounded-md" :placeholder="element.placeholder || 'Text input'" disabled>
+                                </template>
+                                
+                                <!-- Textarea -->
+                                <template x-if="element.type === 'textarea'">
+                                    <textarea class="mt-1 block w-full shadow-sm border-gray-300 rounded-md" rows="3" :placeholder="element.placeholder || 'Text area'" disabled></textarea>
+                                </template>
+                                
+                                <!-- Select -->
+                                <template x-if="element.type === 'select'">
+                                    <select class="mt-1 block w-full shadow-sm border-gray-300 rounded-md" disabled>
+                                        <option selected disabled x-text="element.placeholder || 'Select an option'"></option>
+                                        <template x-for="option in element.options" :key="option.value">
+                                            <option x-text="option.label"></option>
+                                        </template>
+                                    </select>
+                                </template>
+                                
+                                <!-- Radio Group -->
+                                <template x-if="element.type === 'radio'">
+                                    <div class="mt-2 space-y-2">
+                                        <template x-for="option in element.options" :key="option.value">
+                                            <div class="flex items-center">
+                                                <input type="radio" class="h-4 w-4 text-indigo-600 border-gray-300" disabled>
+                                                <label class="ml-2 block text-sm text-gray-700" x-text="option.label"></label>
+                                            </div>
+                                        </template>
                                     </div>
-                                </div>
-                                <input type="date" class="form-input">
-                                <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
+                                </template>
+                                
+                                <!-- Checkbox Group -->
+                                <template x-if="element.type === 'checkbox'">
+                                    <div class="mt-2 space-y-2">
+                                        <template x-for="option in element.options" :key="option.value">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded" disabled>
+                                                <label class="ml-2 block text-sm text-gray-700" x-text="option.label"></label>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                                
+                                <!-- File Upload -->
+                                <template x-if="element.type === 'file'">
+                                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div class="space-y-1 text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                            </svg>
+                                            <p class="text-xs text-gray-500">Upload a file or drag and drop</p>
+                                        </div>
+                                    </div>
+                                </template>
+                                
+                                <!-- Date Picker -->
+                                <template x-if="element.type === 'date'">
+                                    <input type="date" class="mt-1 block w-full shadow-sm border-gray-300 rounded-md" disabled>
+                                </template>
                             </div>
-                        </template>
-                    </div>
-                </template>
+                            
+                            <p x-show="element.helpText" class="mt-1 text-xs text-gray-500" x-text="element.helpText"></p>
+                        </div>
+                    </template>
+                    
+                    <div x-show="isDraggingOver" class="absolute inset-0 border-2 border-indigo-400 rounded-lg bg-indigo-50 bg-opacity-30 pointer-events-none"></div>
+                </div>
             </div>
         </div>
         
-        <!-- Toolbox and Properties Panel -->
-        <div class="w-full lg:w-80 space-y-6">
+        <!-- Toolbox and Properties -->
+        <div class="lg:w-80 space-y-6">
             <!-- Toolbox Panel -->
-            <div class="bg-white shadow rounded-lg p-6">
-                <h2 class="text-lg font-medium mb-4">Form Elements</h2>
-                <div id="toolbox" class="space-y-2">
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="p-4 border-b border-gray-200">
+                    <h2 class="text-lg font-medium text-gray-900">Form Elements</h2>
+                </div>
+                <div class="p-4 space-y-2" id="toolbox">
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'text')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            Text Input
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'text')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
+                        </svg>
+                        <span class="text-sm font-medium">Text Input</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'textarea')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                            </svg>
-                            Text Area
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'textarea')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                        </svg>
+                        <span class="text-sm font-medium">Text Area</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'select')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
-                            Dropdown
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'select')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                        </svg>
+                        <span class="text-sm font-medium">Dropdown</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'radio')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Radio Group
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'radio')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="text-sm font-medium">Radio Buttons</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'checkbox')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Checkbox Group
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'checkbox')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-sm font-medium">Checkboxes</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'file')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                            </svg>
-                            File Upload
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'file')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                        </svg>
+                        <span class="text-sm font-medium">File Upload</span>
                     </div>
                     
                     <div 
-                        class="form-builder-toolbox-item" 
+                        class="flex items-center p-3 border border-gray-200 rounded-md cursor-grab hover:bg-gray-50 transition-colors"
                         draggable="true"
-                        x-on:dragstart="onDragStart($event, 'date')">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            Date Picker
-                        </div>
+                        @@dragstart="dragStartFromToolbox($event, 'date')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm font-medium">Date Picker</span>
                     </div>
                 </div>
             </div>
             
             <!-- Properties Panel -->
-            <div class="bg-white shadow rounded-lg p-6">
-                <h2 class="text-lg font-medium mb-4">Properties</h2>
-                
-                <div x-show="selectedElementIndex === null" class="text-center py-6 text-gray-500">
-                    Select a form element to edit its properties
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="p-4 border-b border-gray-200">
+                    <h2 class="text-lg font-medium text-gray-900">Properties</h2>
                 </div>
-                
-                <div x-show="selectedElementIndex !== null" class="space-y-4">
-                    <div>
-                        <label for="element-label" class="block text-sm font-medium text-gray-700 mb-1">Label</label>
-                        <input type="text" id="element-label" x-model="selectedElement.label" class="form-input">
+                <div class="p-4">
+                    <div x-show="selectedElementIndex === null" class="text-center py-12 text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                        <p>Select a form element to edit its properties</p>
                     </div>
                     
-                    <div>
-                        <label for="element-placeholder" class="block text-sm font-medium text-gray-700 mb-1">Placeholder</label>
-                        <input type="text" id="element-placeholder" x-model="selectedElement.placeholder" class="form-input">
-                    </div>
-                    
-                    <div>
-                        <label for="element-help-text" class="block text-sm font-medium text-gray-700 mb-1">Help Text</label>
-                        <input type="text" id="element-help-text" x-model="selectedElement.helpText" class="form-input">
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <input type="checkbox" id="element-required" x-model="selectedElement.required" class="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
-                        <label for="element-required" class="ml-2 block text-sm text-gray-700">Required</label>
-                    </div>
-                    
-                    <template x-if="['select', 'radio', 'checkbox'].includes(selectedElement.type)">
+                    <div x-show="selectedElementIndex !== null" class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Options</label>
-                            <div class="space-y-2">
-                                <template x-for="(option, optionIndex) in selectedElement.options" :key="optionIndex">
-                                    <div class="flex gap-2">
-                                        <input type="text" x-model="option.label" placeholder="Label" class="form-input flex-grow">
-                                        <input type="text" x-model="option.value" placeholder="Value" class="form-input w-1/3">
-                                        <button type="button" x-on:click="removeOption(optionIndex)" class="text-gray-400 hover:text-red-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </template>
-                                <button type="button" x-on:click="addOption" class="mt-1 btn-outline text-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                                    </svg>
-                                    Add Option
-                                </button>
-                            </div>
+                            <label for="element-label" class="block text-sm font-medium text-gray-700 mb-1">Label</label>
+                            <input type="text" id="element-label" x-model="selectedElement ? selectedElement.label : ''" class="block w-full shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
-                    </template>
+                        
+                        <div x-show="['text', 'textarea', 'select'].includes(selectedElement ? selectedElement.type : '')">
+                            <label for="element-placeholder" class="block text-sm font-medium text-gray-700 mb-1">Placeholder</label>
+                            <input type="text" id="element-placeholder" x-model="selectedElement ? selectedElement.placeholder : ''" class="block w-full shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label for="element-help-text" class="block text-sm font-medium text-gray-700 mb-1">Help Text</label>
+                            <input type="text" id="element-help-text" x-model="selectedElement ? selectedElement.helpText : ''" class="block w-full shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="element-required" x-model="selectedElement ? selectedElement.required : false" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                            <label for="element-required" class="ml-2 block text-sm text-gray-700">Required</label>
+                        </div>
+                        
+                        <template x-if="selectedElement && ['select', 'radio', 'checkbox'].includes(selectedElement.type)">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="block text-sm font-medium text-gray-700">Options</label>
+                                    <button type="button" @@click="addOption" class="text-sm text-indigo-600 hover:text-indigo-900">
+                                        + Add Option
+                                    </button>
+                                </div>
+                                <div class="space-y-2">
+                                    <template x-for="(option, optionIndex) in selectedElement.options" :key="optionIndex">
+                                        <div class="flex gap-2">
+                                            <input type="text" x-model="option.label" placeholder="Label" class="block flex-grow shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                                            <input type="text" x-model="option.value" placeholder="Value" class="block w-24 shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                                            <button type="button" @@click="removeOption(optionIndex)" class="text-gray-400 hover:text-red-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <template x-if="selectedElement && selectedElement.type === 'file'">
+                            <div>
+                                <label for="element-accepted-files" class="block text-sm font-medium text-gray-700 mb-1">Accepted Files</label>
+                                <input type="text" id="element-accepted-files" x-model="selectedElement.acceptedFiles" placeholder="e.g., PDF, DOC, DOCX up to 10MB" class="block w-full shadow-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Preview Modal -->
-    <div x-show="showPreview" x-cloak class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div x-show="showPreview" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none;">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div x-show="showPreview" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-            
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
-            <div x-show="showPreview" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
+            <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6">
+                <div class="absolute top-0 right-0 pt-4 pr-4">
+                    <button type="button" @@click="showPreview = false" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="sr-only">Close</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                             Form Preview
                         </h3>
-                        <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" x-on:click="showPreview = false">
-                            <span class="sr-only">Close</span>
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="mt-2">
-                        <h2 class="text-xl font-semibold" x-text="formTitle || 'Untitled Form'"></h2>
-                        <p class="text-gray-500 mt-1" x-text="formDescription || 'No description provided'"></p>
-                        
-                        <div class="mt-6 space-y-6">
-                            <template x-for="(element, index) in formElements" :key="element.id">
-                                <div class="space-y-2">
-                                    <!-- Text Input -->
-                                    <template x-if="element.type === 'text'">
-                                        <div>
-                                            <label :for="`preview-${element.id}`" class="block text-sm font-medium text-gray-700 mb-1" x-text="element.label || 'Text Input'"></label>
-                                            <input type="text" :id="`preview-${element.id}`" :placeholder="element.placeholder || 'Enter text'" class="form-input" :required="element.required">
-                                            <p x-show="element.helpText" x-text="element.helpText" class="mt-1 text-xs text-gray-500"></p>
-                                        </div>
-                                    </template>
-                                    
-                                    <!-- Similar templates for other element types... -->
-                                </div>
-                            </template>
+                        <div class="mt-4 border-t border-gray-200 pt-4">
+                            <h2 class="text-xl font-semibold text-gray-900" x-text="formTitle || 'Untitled Form'"></h2>
+                            <p class="text-gray-500 mt-1" x-text="formDescription || 'No description provided'"></p>
                             
-                            <div class="pt-4">
-                                <button type="button" class="btn-primary">
-                                    Submit
-                                </button>
-                            </div>
+                            <form class="mt-6 space-y-6">
+                                <template x-for="(element, index) in formElements" :key="element.id">
+                                    <div class="space-y-1">
+                                        <!-- Text Input -->
+                                        <template x-if="element.type === 'text'">
+                                            <div>
+                                                <label :for="`preview-${element.id}`" class="block text-sm font-medium text-gray-700" x-text="element.label || 'Text Input'"></label>
+                                                <span x-show="element.required" class="text-red-500">*</span>
+                                                <input type="text" :id="`preview-${element.id}`" :placeholder="element.placeholder || ''" class="mt-1 block w-full shadow-sm border-gray-300 rounded-md">
+                                                <p x-show="element.helpText" class="mt-1 text-xs text-gray-500" x-text="element.helpText"></p>
+                                            </div>
+                                        </template>
+                                        
+                                        <!-- Similar templates for other element types... -->
+                                    </div>
+                                </template>
+                                
+                                <div class="pt-4">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -493,19 +385,27 @@
     <script>
         function formBuilder() {
             return {
+                formId: '@(ViewData["FormId"])',
                 formTitle: '',
                 formDescription: '',
+                formStatus: 'Draft',
                 formElements: [],
                 selectedElementIndex: null,
+                isDraggingOver: false,
                 showPreview: false,
+                draggedElementIndex: null,
                 
                 init() {
-                    // Initialize the drag and drop functionality
-                    this.initDragAndDrop();
+                    // Initialize with an empty form or load existing form if ID is provided
+                    if (this.formId) {
+                        this.loadForm();
+                    }
                     
-                    // Deselect element when clicking outside
-                    document.addEventListener('click', () => {
-                        this.selectedElementIndex = null;
+                    // Close property panel when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('.form-canvas') && !e.target.closest('.property-panel')) {
+                            this.selectedElementIndex = null;
+                        }
                     });
                 },
                 
@@ -513,57 +413,83 @@
                     return this.selectedElementIndex !== null ? this.formElements[this.selectedElementIndex] : null;
                 },
                 
-                initDragAndDrop() {
-                    const formCanvas = this.$refs.formCanvas;
+                loadForm() {
+                    // In a real application, this would fetch the form data from the server
+                    // For now, we'll use mock data
+                    console.log('Loading form with ID:', this.formId);
                     
-                    // Initialize Sortable.js for reordering elements
-                    new Sortable(formCanvas, {
-                        animation: 150,
-                        handle: '.form-builder-element',
-                        ghostClass: 'form-builder-placeholder',
-                        onEnd: (evt) => {
-                            // Update the order of elements in the array
-                            const element = this.formElements.splice(evt.oldIndex, 1)[0];
-                            this.formElements.splice(evt.newIndex, 0, element);
-                            
-                            // Update the selected element index if it was moved
-                            if (this.selectedElementIndex === evt.oldIndex) {
-                                this.selectedElementIndex = evt.newIndex;
+                    // Sample form data - in a real app, you would fetch this from an API
+                    const mockFormData = {
+                        title: 'Customer Feedback Form',
+                        description: 'Help us improve our products and services by sharing your feedback.',
+                        status: 'Active',
+                        elements: [
+                            {
+                                id: 'elem-1',
+                                type: 'text',
+                                label: 'Your Name',
+                                placeholder: 'Enter your full name',
+                                helpText: '',
+                                required: true
+                            },
+                            {
+                                id: 'elem-2',
+                                type: 'text',
+                                label: 'Email Address',
+                                placeholder: 'Enter your email address',
+                                helpText: 'We will only use your email if you request a response.',
+                                required: true
+                            },
+                            {
+                                id: 'elem-3',
+                                type: 'radio',
+                                label: 'How satisfied are you with our service?',
+                                helpText: '',
+                                required: true,
+                                options: [
+                                    { label: 'Very Satisfied', value: '5' },
+                                    { label: 'Satisfied', value: '4' },
+                                    { label: 'Neutral', value: '3' },
+                                    { label: 'Dissatisfied', value: '2' },
+                                    { label: 'Very Dissatisfied', value: '1' }
+                                ]
+                            },
+                            {
+                                id: 'elem-4',
+                                type: 'textarea',
+                                label: 'What can we do to improve our service?',
+                                placeholder: 'Your suggestions for improvement',
+                                helpText: '',
+                                required: false
                             }
-                        }
-                    });
+                        ]
+                    };
                     
-                    // Handle drop events from the toolbox
-                    formCanvas.addEventListener('dragover', (e) => {
-                        e.preventDefault();
-                        formCanvas.classList.add('drag-over');
-                    });
-                    
-                    formCanvas.addEventListener('dragleave', () => {
-                        formCanvas.classList.remove('drag-over');
-                    });
-                    
-                    formCanvas.addEventListener('drop', (e) => {
-                        e.preventDefault();
-                        formCanvas.classList.remove('drag-over');
-                        
-                        const elementType = e.dataTransfer.getData('element-type');
-                        if (elementType) {
-                            this.addElement(elementType);
-                        }
-                    });
+                    this.formTitle = mockFormData.title;
+                    this.formDescription = mockFormData.description;
+                    this.formStatus = mockFormData.status;
+                    this.formElements = mockFormData.elements;
                 },
                 
-                onDragStart(event, elementType) {
-                    event.dataTransfer.setData('element-type', elementType);
-                    event.dataTransfer.effectAllowed = 'copy';
+                getElementTypeName(type) {
+                    const typeNames = {
+                        'text': 'Text Input',
+                        'textarea': 'Text Area',
+                        'select': 'Dropdown',
+                        'radio': 'Radio Buttons',
+                        'checkbox': 'Checkboxes',
+                        'file': 'File Upload',
+                        'date': 'Date Picker'
+                    };
+                    
+                    return typeNames[type] || 'Form Element';
                 },
                 
-                addElement(type) {
-                    const newElement = {
-                        id: `element-${Date.now()}`,
-                        type: type,
-                        label: this.getDefaultLabelForType(type),
+                createNewElement(type) {
+                    const element = {
+                        id: `elem-${Date.now()}`,
+                        type,
+                        label: this.getElementTypeName(type),
                         placeholder: '',
                         helpText: '',
                         required: false
@@ -571,30 +497,89 @@
                     
                     // Add options for select, radio, and checkbox types
                     if (['select', 'radio', 'checkbox'].includes(type)) {
-                        newElement.options = [
+                        element.options = [
                             { label: 'Option 1', value: 'option1' },
                             { label: 'Option 2', value: 'option2' }
                         ];
                     }
                     
-                    this.formElements.push(newElement);
-                    this.selectedElementIndex = this.formElements.length - 1;
+                    return element;
                 },
                 
-                getDefaultLabelForType(type) {
-                    const labels = {
-                        'text': 'Text Input',
-                        'textarea': 'Text Area',
-                        'select': 'Dropdown',
-                        'radio': 'Radio Group',
-                        'checkbox': 'Checkbox Group',
-                        'file': 'File Upload',
-                        'date': 'Date Picker'
-                    };
+                // Toolbox drag and drop
+                dragStartFromToolbox(event, elementType) {
+                    event.dataTransfer.setData('elementType', elementType);
+                    event.dataTransfer.effectAllowed = 'copy';
+                },
+                
+                // Form canvas drag and drop for reordering
+                dragStart(event, index) {
+                    this.draggedElementIndex = index;
+                    event.dataTransfer.effectAllowed = 'move';
+                },
+                
+                dragEnd(event) {
+                    this.draggedElementIndex = null;
+                },
+                
+                dragOver(event) {
+                    event.preventDefault();
+                    this.isDraggingOver = true;
+                },
+                
+                dragLeave(event) {
+                    this.isDraggingOver = false;
+                },
+                
+                drop(event) {
+                    event.preventDefault();
+                    this.isDraggingOver = false;
                     
-                    return labels[type] || 'Form Element';
+                    // Check if this is a new element from the toolbox
+                    const elementType = event.dataTransfer.getData('elementType');
+                    if (elementType) {
+                        const newElement = this.createNewElement(elementType);
+                        this.formElements.push(newElement);
+                        this.selectedElementIndex = this.formElements.length - 1;
+                        return;
+                    }
+                    
+                    // Handle reordering of existing elements
+                    if (this.draggedElementIndex !== null) {
+                        // Find the drop target index
+                        const dropTargetIndex = this.getDropTargetIndex(event);
+                        
+                        // Move the element
+                        if (dropTargetIndex !== this.draggedElementIndex) {
+                            const element = this.formElements.splice(this.draggedElementIndex, 1)[0];
+                            this.formElements.splice(dropTargetIndex, 0, element);
+                            this.selectedElementIndex = dropTargetIndex;
+                        }
+                    }
                 },
                 
+                getDropTargetIndex(event) {
+                    // Get all form elements in the canvas
+                    const formElementNodes = Array.from(this.formCanvas.querySelectorAll('.form-element'));
+                    
+                    // Get the drop position
+                    const dropY = event.clientY;
+                    
+                    // Find the closest element to the drop position
+                    for (let i = 0; i < formElementNodes.length; i++) {
+                        const rect = formElementNodes[i].getBoundingClientRect();
+                        const centerY = rect.top + (rect.height / 2);
+                        
+                        if (dropY < centerY) {
+                            return i;
+                        }
+                    }
+                    
+                    // If we're here, drop at the end
+                    return formElementNodes.length;
+                },
+                
+                // Element actions
                 selectElement(index) {
                     this.selectedElementIndex = index;
                 },
@@ -608,14 +593,17 @@
                     }
                 },
                 
-                moveElement(fromIndex, toIndex) {
-                    if (toIndex < 0 || toIndex >= this.formElements.length) return;
+                duplicateElement(index) {
+                    const original = this.formElements[index];
+                    const copy = JSON.parse(JSON.stringify(original));
+                    copy.id = `elem-${Date.now()}`;
+                    copy.label = `${copy.label} (Copy)`;
                     
-                    const element = this.formElements.splice(fromIndex, 1)[0];
-                    this.formElements.splice(toIndex, 0, element);
-                    this.selectedElementIndex = toIndex;
+                    this.formElements.splice(index + 1, 0, copy);
+                    this.selectedElementIndex = index + 1;
                 },
                 
+                // Option management
                 addOption() {
                     if (!this.selectedElement || !this.selectedElement.options) return;
                     
@@ -629,8 +617,17 @@
                 
                 removeOption(index) {
                     if (!this.selectedElement || !this.selectedElement.options) return;
+                    if (this.selectedElement.options.length <= 1) return; // Keep at least one option
                     
                     this.selectedElement.options.splice(index, 1);
+                },
+                
+                // Form actions
+                clearForm() {
+                    if (confirm('Are you sure you want to clear all form elements?')) {
+                        this.formElements = [];
+                        this.selectedElementIndex = null;
+                    }
                 },
                 
                 previewForm() {
@@ -638,23 +635,30 @@
                 },
                 
                 saveForm() {
-                    // Validate form data
+                    // Validate form
                     if (!this.formTitle.trim()) {
                         alert('Please enter a form title');
                         return;
                     }
                     
-                    // In a real application, you would send this data to the server
+                    // In a real application, this would send the form data to the server
                     const formData = {
+                        id: this.formId || '',
                         title: this.formTitle,
                         description: this.formDescription,
+                        status: this.formStatus,
                         elements: this.formElements
                     };
                     
-                    console.log('Form data saved:', formData);
+                    console.log('Saving form:', formData);
                     
-                    // Show a success message
+                    // Simulate successful save
                     alert('Form saved successfully!');
+                    
+                    // Redirect to form management page if this is a new form
+                    if (!this.formId) {
+                        // window.location.href = '/FormManagement';
+                    }
                 }
             };
         }

@@ -31,7 +31,8 @@ namespace EFormBuilder.Models.Entities
         
         public int Views { get; set; } = 0;
         
-        public int Submissions { get; set; } = 0;
+        public int SubmissionCount { get; set; } = 0; // Renamed from Submissions
+        public int Submissions { get; set; }
         
         // Store the form elements as JSON
         [Required]
@@ -46,8 +47,8 @@ namespace EFormBuilder.Models.Entities
             set => ElementsJson = JsonSerializer.Serialize(value);
         }
         
-        // Navigation properties
-        public virtual ICollection<FormSubmission> Submissions { get; set; }
+        // Navigation property with a different name
+        public virtual ICollection<FormSubmission> FormSubmissions { get; set; }
     }
     
     public class FormElement

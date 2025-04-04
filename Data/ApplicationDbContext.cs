@@ -38,7 +38,7 @@ namespace EFormBuilder.Data
 
                 // Configure the relationship between Form and FormSubmission
                 entity.HasOne(e => e.Form)
-                    .WithMany(f => f.Submissions)
+                    .WithMany(f => f.FormSubmissions) // Updated from Submissions to FormSubmissions
                     .HasForeignKey(e => e.FormId)
                     .OnDelete(DeleteBehavior.Cascade);
             });

@@ -115,8 +115,8 @@ namespace EFormBuilder.Services
 
             _context.FormSubmissions.Add(submission);
 
-            // Increment the form's submission count
-            form.Submissions++;
+            // Increment the form's submission count (renamed property)
+            form.SubmissionCount++;
             
             await _context.SaveChangesAsync();
 
