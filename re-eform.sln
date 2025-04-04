@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFormBuilder", "EFormBuilder.csproj", "{FBA09BE6-C7DC-88CD-4101-6A3C54C776C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBA09BE6-C7DC-88CD-4101-6A3C54C776C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA09BE6-C7DC-88CD-4101-6A3C54C776C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA09BE6-C7DC-88CD-4101-6A3C54C776C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA09BE6-C7DC-88CD-4101-6A3C54C776C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D5CD40A-971B-442E-AC94-5DD26D4B4AB0}
+	EndGlobalSection
+EndGlobal

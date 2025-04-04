@@ -1,0 +1,203 @@
+@{
+    ViewData["Title"] = "Form Builder";
+}
+
+<div class="space-y-6">
+    <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Form Builder</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Create and manage custom forms</p>
+            </div>
+            <a href="/FormBuilder/Create" class="btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Create New Form
+            </a>
+        </div>
+        <div class="px-4 py-5 sm:p-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card card-hover">
+                <div class="p-5">
+                    <div class="mb-3 flex justify-between items-start">
+                        <h4 class="text-lg font-medium text-gray-900">Customer Feedback</h4>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Active</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">Collect feedback from customers about our services</p>
+                    <div class="text-xs text-gray-500 mb-4">Last updated: April 2, 2025</div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                124 views
+                            </span>
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                                56 submissions
+                            </span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <a href="/FormBuilder/Edit/1" class="p-1 text-primary-600 rounded hover:bg-primary-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </a>
+                            <button class="p-1 text-red-600 rounded hover:bg-red-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card card-hover">
+                <div class="p-5">
+                    <div class="mb-3 flex justify-between items-start">
+                        <h4 class="text-lg font-medium text-gray-900">IT Support Request</h4>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Active</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">Submit IT support and service requests</p>
+                    <div class="text-xs text-gray-500 mb-4">Last updated: April 1, 2025</div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                215 views
+                            </span>
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                                87 submissions
+                            </span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <a href="/FormBuilder/Edit/2" class="p-1 text-primary-600 rounded hover:bg-primary-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </a>
+                            <button class="p-1 text-red-600 rounded hover:bg-red-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card card-hover">
+                <div class="p-5">
+                    <div class="mb-3 flex justify-between items-start">
+                        <h4 class="text-lg font-medium text-gray-900">Employee Onboarding</h4>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Draft</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">New employee information collection form</p>
+                    <div class="text-xs text-gray-500 mb-4">Last updated: March 30, 2025</div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                0 views
+                            </span>
+                            <span class="text-xs text-gray-500 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                                0 submissions
+                            </span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <a href="/FormBuilder/Edit/3" class="p-1 text-primary-600 rounded hover:bg-primary-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </a>
+                            <button class="p-1 text-red-600 rounded hover:bg-red-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Create New Form Card -->
+            <a href="/FormBuilder/Create" class="card card-hover p-5 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center hover:border-primary-300 hover:bg-primary-50 transition-colors duration-200">
+                <div class="rounded-full bg-primary-100 p-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-medium text-gray-900">Create New Form</h4>
+                <p class="mt-1 text-sm text-gray-500">Start building a custom form</p>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Templates Section -->
+    <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Form Templates</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Start with a pre-built template</p>
+            </div>
+        </div>
+        <div class="px-4 py-5 sm:p-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <a href="/FormBuilder/Create?template=feedback" class="card card-hover p-5 flex flex-col items-center justify-center text-center hover:bg-gray-50">
+                <div class="rounded-full bg-blue-100 p-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-medium text-gray-900">Feedback Form</h4>
+                <p class="mt-1 text-sm text-gray-500">Collect customer feedback</p>
+            </a>
+            
+            <a href="/FormBuilder/Create?template=survey" class="card card-hover p-5 flex flex-col items-center justify-center text-center hover:bg-gray-50">
+                <div class="rounded-full bg-green-100 p-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-medium text-gray-900">Survey</h4>
+                <p class="mt-1 text-sm text-gray-500">Gather information and opinions</p>
+            </a>
+            
+            <a href="/FormBuilder/Create?template=registration" class="card card-hover p-5 flex flex-col items-center justify-center text-center hover:bg-gray-50">
+                <div class="rounded-full bg-purple-100 p-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-medium text-gray-900">Registration Form</h4>
+                <p class="mt-1 text-sm text-gray-500">Event or service registration</p>
+            </a>
+            
+            <a href="/FormBuilder/Create?template=request" class="card card-hover p-5 flex flex-col items-center justify-center text-center hover:bg-gray-50">
+                <div class="rounded-full bg-amber-100 p-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-medium text-gray-900">Request Form</h4>
+                <p class="mt-1 text-sm text-gray-500">Service or resource requests</p>
+            </a>
+        </div>
+    </div>
+</div>
